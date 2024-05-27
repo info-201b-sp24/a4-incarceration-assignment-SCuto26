@@ -1,25 +1,33 @@
-# Load necessary packages
+# Stefan Cutovic
+# Assignment 4: Incarceration
+# 5/26/24
+
+options(repos = c(CRAN = "https://cran.rstudio.com/"))
+options(warn=-1)
+
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
+
+library(dplyr)
 library(ggplot2)
 
-install.packages("dplyr")
-library(dplyr)
-
-incarceration_dataset <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-pop.csv")
-
-# Filter the dataset for specific counties or racial groups
+# Filters dataset for specific counties or racial groups for visualization
 trends_data <- incarceration_dataset %>%
-  filter(county_name %in% c("Los Angeles County", "Fulton County")) %>%
-  # You can also filter by racial groups using similar logic
-  
-  # Plotting Trends Over Time
-  trends_plot <- ggplot(data = trends_data, aes(x = year)) +
-  geom_line(aes(y = total_prison_pop, color = county_name), size = 1) +  # Adjust 'y' and 'color' aesthetics based on your selected variables
-  labs(title = "Trends in Prison Population Over Time",
+  filter((county_name == "Los Angeles County" & state == "CA") |
+           (county_name == "Fulton County" & state == "GA") |
+           (county_name == "New York County" & state == "NY") |
+           (county_name == "Harris County" & state == "TX"))
+
+# Plots prison population of specific counties over time
+trends_plot <- ggplot(data = trends_data, aes(x = year, y = total_prison_pop, 
+                                              color = paste(county_name, state, sep = ", "))) +
+  geom_line(lineWidth = 1) +  
+  labs(title = "Prison Population Over Time",
        x = "Year",
        y = "Total Prison Population",
-       color = "County") +  # Customize axis and legend labels
-  theme_minimal() +  # Adjust plot theme as desired
-  theme(legend.position = "bottom")  # Adjust legend position as desired
+       color = "County, State") +
+  theme_minimal() +  
+  theme(legend.position = "right",
+        plot.title = element_text(hjust = 0.5, face = "bold"))
 
-# Display the plot
 print(trends_plot)
