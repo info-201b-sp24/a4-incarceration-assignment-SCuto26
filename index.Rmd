@@ -3,69 +3,120 @@ title: "A3: Incarceration"
 output: html_document
 ---
 
+Stefan Cutovic (scuto26@uw.edu) <br />
+
 ### Introduction
 
-An introduction of the problem domain and a description of the variable(s) you are choosing to analyze (and why!)
+One of the most obvious signs of systemic racism in the United States is the prison system. For decades, several sociopolitical factors have led to the disproportionate incarceration of people of color. Policies like the war on drugs and the over-policing of communities of color have played a big role in this problem.
+
+This analysis will focus on the total prison population (total_prison_pop), black prison population (black_prison_pop), and white prison population (white_prison_pop) across different counties and years. By examining these variables, the hope is to uncover trends and disparities in incarceration rates over time, specifically highlighting how these rates vary by race. These specific variables wer chosen to illustrate the extent of racial disparities in the U.S. prison system, especially given that recent discussions have primarily revolved around black incarceration compared to their white counterparts. This analysis will not be considering other races or genders to maintain a focused examination of this particular aspect of systemic racism.
+
+<br>
+<br>
+
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+Relevant values of interest that can be utilized to showcase racial disparities in the U.S. prison system:
 
-These will likely be calculated using your DPLYR skills, answering questions such as: 
+<br>
 
-- What is the average value of my variable across all the counties (in the current year)?
-- Where is my variable the highest / lowest?
-- How much has my variable change over the last N years?
+* The county with the highest prison population in 1970 was Fulton County.
+* The county with the highest prison population in 2016 was Los Angeles County.
+* The proportion of the black prison population to the total prison population in 2016 was 38.7%.
+* In Los Angeles County in 2016, the black prison population made up 36.9% of the total prison population.
+* The total number of black prisoners increased by 402,095 from 1970 to 2016.
+* The proportion of the white prison population to the total prison population in 2016 was 39.7%.
+* In Los Angeles County in 2016, the white prison population made up 10% of the total prison population.
+* The total number of white prisoners increased by 414,210 from 1970 to 2016.
 
-Feel free to calculate and report values that you find relevant. Again, remember that the purpose is to think about how these measure of incarceration vary by race.
+<br>
+
+Choosing to analyze the total prison population, black prison population, and white prison population is key to understanding the racial disparities in the U.S. prison system. By looking at these variables from 1970 to 2016, the analysis shows how these disparities have persisted over time due to discriminatory policies and systemic inequities.
+
+Focusing on Los Angeles County is especially relevant because it's a major urban area that deals with racial profiling, disproportionate policing in minority communities, and sentencing disparities. These issues have likely led to the significant racial imbalances in incarceration rates seen in the analysis.
+
+Comparing the black and white prison populations highlights the different treatment and outcomes for people of different races. The overrepresentation of Black individuals in prisons, both nationwide and in Los Angeles County, shows the systemic biases and inequalities that have long affected Black communities.
+
+This analysis helps to quantify these disparities and contributes to a better understanding of how the criminal justice system has perpetuated racial inequalities. It highlights the need for reform to address and dismantle systemic racism within the prison system, which has unfairly impacted communities of color, especially Black communities, for decades.
+
+<br>
+<br>
 
 ### The Dataset
 
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+The data comes from the Vera Institute of Justice, a nonprofit that aims to make the criminal legal and immigration systems fairer and more equitable. They gathered data from sources like the U.S. Department of Justice Bureau of Justice Statistics (BJS), along with federal, state, and local agencies, and other researchers.
 
+To compile the dataset, Vera combined information from the BJS Annual Survey of Jails, Census of Jails, and Mortality in Correctional Institutions data collections. They also pulled data from state agencies, jail websites, and public records requests. Their goal was to create a comprehensive and accessible dataset on U.S. jail and prison populations.
+
+This dataset has 153,811 rows and 36 columns, including details like county names, urbanicity, total population, prison population, and demographic breakdowns by race and gender. 
+
+When working with this data, it's important to recognize whose perspectives are present and whose are missing. Amplifying the voices of impacted communities offers insights into the complexities of the issue, allowing for a more comprehensive understanding. By focusing on these experiences, researchers can better address systemic injustices within the criminal justice system.
+
+However, there are limitations with the data. Despite efforts to fix anomalies, some errors might still be present. The dataset includes prison population numbers only up to 2016, which limits the analysis of recent trends. Additionally, some counties might not report their incarceration demographics accurately, and missing or inconsistent data (marked as 0 or NA) can complicate analysis.
+
+<br>
+<br>
 
 ### Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+Visualizing prison populations across counties over time can provide better insights into how the criminal justice system varies in different parts of the U.S. By highlighting disparities in incarceration rates across different regions, it may lead to discussions on alternative approaches to addressing societal issues related to crime.
 
-The first chart that you will create and include will show the trend over time of your variable/topic. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+<br>
+<br>
 
-- Show more than one, but fewer than ~10 trends
-  - This may mean showing the same measure for different locations or different racial groups. Think carefully about a meaningful comparison of locations (e.g., the top 10 counties in a state, top 10 states, etc.)
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
+``````{r, echo = FALSE, fig.align='center', code = readLines("chart1_trends_over_time.R")}
+``````
 
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
+<br>
+<br>
 
-Here's an example of how to run an R script inside an RMarkdown file:
+One noticeable pattern is the substantial increase in prison populations across all four regions between 1990 and 2000. During this period, the prison populations experienced a sharp upward trajectory, with Los Angeles County, CA exhibiting the most dramatic rise.
 
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
-```
+After reaching peak levels around the early 2000s, the prison populations in these regions generally began to decline, although at varying rates. Los Angeles County, CA and New York County, NY experienced more pronounced decreases in their prison populations from the early 2000s onwards. However, Fulton County, GA has shown a very gradual increase in their populations since the 1970s.
+
+<br>
+<br>
+<br>
 
 ### Variable Comparison Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+A chart like this gives insights into potential racial disparities in a specific region's prison system, like Los Angeles County. By plotting the Black prison population against the total prison population over time, it lets us see trends that might show disproportionate incarceration rates for the Black community. The data shows a strong linear relationship, suggesting that as the total prison population goes up, the Black prison population does too, maybe even more. This could mean Black people are overrepresented in prison compared to their share of the population.
 
-The second chart that you will create and include will show how two different (continuous) variables are related to one another. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+<br>
+<br>
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- If you choose to add a color encoding (not required), you need a legend for your different color and a clear legend title
+``````{r, echo = FALSE, fig.align='center', code = readLines("chart2_variable_comparison.R")}
+``````
+
+<br>
+<br>
+
+Based on the graph, there appears to be a strong positive correlation between the total prison population and the Black prison population in Los Angeles County over time. As the total prison population increases, the Black prison population also rises in a linear fashion.
+
+The data points are scattered around an upward-sloping line, indicating a consistent pattern of growth in the Black prison population relative to the overall prison population. This trend suggests that the proportion of Black individuals in the prison system has remained relatively constant or has increased slightly as the total prison population has grown.
+
+<br>
+<br>
+<br>
 
 ### Map
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+A map visualizing the total prison population by state can provide insights into the broader patterns and potential disparities in incarceration rates across different regions of the United States. One benefit of visualizing such a chart is its ability to identify geographic disparities. By mapping out states or regions with disproportionately high or low prison populations relative to their population sizes, the map can highlight potential systemic issues or policy differences contributing to varying incarceration rates across the country.
 
-The last chart that you will create and include will show how a variable is distributed geographically. Again, think carefully about what such a comparison means and what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
+Additionally, the map may reveal regional trends, such as geographic clusters where neighboring states exhibit similar levels of prison populations. These patterns could suggest the influence of regional factors like shared policies or cultural attitudes shaping incarceration practices.
 
-- Your map needs a title
-- Your color scale needs a legend with a clear label
-- Use a map based coordinate system to set the aspect ratio of your map
+<br>
+<br>
 
+``````{r, echo = FALSE, fig.align='center', code = readLines("chart3_map.R")}
+``````
+
+<br>
+<br>
+
+The map provides a visual representation of the total prison population across different states in the United States in 2016. A notable pattern observed is the concentration of states with the highest prison populations, represented by the darkest shade of blue, in the southern and western regions of the country. States like California, Texas, and Florida stand out as having particularly large prison populations, exceeding 100,000 inmates. In contrast, many states in the northeastern and midwestern regions have relatively lower prison populations, indicated by the lighter blue shades on the map.
+
+<br>
+<br>
+<br>
