@@ -11,6 +11,8 @@ suppressPackageStartupMessages(library(ggplot2))
 library(dplyr)
 library(ggplot2)
 
+incarceration_dataset <- read.csv("https://raw.githubusercontent.com/melaniewalsh/Neat-Datasets/main/us-prison-pop.csv")
+
 # Filters dataset for specific counties or racial groups for visualization
 trends_data <- incarceration_dataset %>%
   filter((county_name == "Los Angeles County" & state == "CA") |
